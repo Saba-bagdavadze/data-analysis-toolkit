@@ -1,0 +1,21 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+
+# Tool caches
+.pytest_cache/
+.ipynb_checkpoints/
+
+# OS / editor files
+.DS_Store
+.vscode/
+
+# Data (download from Kaggle, see README)
+data/*
+!data/.gitkeep
+*.csv
+*.zip

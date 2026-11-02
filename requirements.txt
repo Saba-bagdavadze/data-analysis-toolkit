@@ -1,0 +1,9 @@
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.8
+seaborn>=0.13
+pytest>=8.0
+
+# Optional, only needed to load these file types with loading.load_data:
+# openpyxl   # .xlsx
+# pyarrow    # .parquet
