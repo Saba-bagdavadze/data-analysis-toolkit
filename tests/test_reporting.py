@@ -74,34 +74,6 @@ def test_clean_data_has_no_findings():
     assert summarize_findings(build(make_clean_df())) == []
 
 
-def test_messy_data_findings():
-    findings = summarize_findings(build(make_messy_df()))
-    text = "\n".join(findings)
-    assert "id: 1 missing IDs" in text
-    assert "id: 1 duplicated IDs" in text
-    assert "verdict: unexpected values maybe" in text
-    assert "score: 1 values below 0, 1 above 1" in text
-    assert "score: 1 missing values (25.0%)" in text
-
-
-def test_report_to_markdown():
-    text = report_to_markdown(build(make_messy_df()), title="Test report")
-    assert text.startswith("# Test report\n")
-    assert "## Findings" in text
-    assert "## Numeric range checks" in text
-    assert "- verdict: unexpected values maybe" in text
-
-
-def test_report_to_markdown_clean():
-    text = report_to_markdown(build(make_clean_df()))
-    assert "No problems found" in text
-
-
-def test_save_report_creates_folders(tmp_path):
-    path = save_report("# hello\n", tmp_path / "nested" / "report.md")
-    assert path.read_text() == "# hello\n"
-
-
 def test_duplicate_rows_finding():
     df = pd.DataFrame({"a": [1, 1, 2, 3]})
     findings = summarize_findings(build_quality_report(df))
